@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Photobooth Profesional</title>
+    <style>
+        /* CSS Tambahan untuk Fitur Baru */
+        .frame-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 15px 0; }
+        .frame-btn { background: #334155; padding: 10px; border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+        .frame-btn.selected { border-color: var(--primary); background: #475569; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- LAYAR 1: PILIH BINGKAI -->
+        <div id="screen-home" class="screen active">
+            <h1>PILIH TEMA BINGKAI</h1>
+            <div class="frame-grid" id="frame-selector">
+                <!-- 10 Pilihan Tema -->
+                <div class="frame-btn" onclick="selectFrame('Pacar')">❤️ Pacar</div>
+                <div class="frame-btn" onclick="selectFrame('Spiderman')">🕷️ Spiderman</div>
+                <div class="frame-btn" onclick="selectFrame('Laut')">🌊 Laut</div>
+                <div class="frame-btn" onclick="selectFrame('Summer')">☀️ Summer</div>
+                <div class="frame-btn" onclick="selectFrame('Disney')">🏰 Disney</div>
+                <div class="frame-btn" onclick="selectFrame('Retro')">🎞️ Retro</div>
+                <div class="frame-btn" onclick="selectFrame('Minimalis')">⬜ Minimalis</div>
+                <div class="frame-btn" onclick="selectFrame('Neon')">✨ Neon</div>
+                <div class="frame-btn" onclick="selectFrame('Floral')">🌸 Floral</div>
+                <div class="frame-btn" onclick="selectFrame('Birthday')">🎂 Birthday</div>
+            </div>
+            <button class="btn" onclick="goToCamera()">LANJUT KE PEMBAYARAN</button>
+        </div>
+
+        <!-- LAYAR KAMERA (Seperti kode sebelumnya) -->
+        <!-- ... (Kode kamera tetap sama) ... -->
+
+        <!-- LAYAR HASIL DENGAN TOMBOL ULANG -->
+        <div id="screen-result" class="screen">
+            <h1>HASIL FOTOMU!</h1>
+            <div id="result-container" class="preview-grid"></div>
+            
+            <button class="btn" onclick="printPhoto()">CETAK FOTO</button>
+            <!-- Tombol Ulang Foto -->
+            <button class="btn" style="background: #e11d48;" onclick="resetApp()">ULANGI FOTO</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedFrame = "Minimalis";
+
+        function selectFrame(theme) {
+            selectedFrame = theme;
+            document.querySelectorAll('.frame-btn').forEach(btn => btn.classList.remove('selected'));
+            event.target.classList.add('selected');
+            alert("Tema terpilih: " + theme);
+        }
+
+        function resetApp() {
+            capturedImages = [];
+            photoCounter = 0;
+            switchScreen('screen-home');
+        }
+        
+        // Integrasi dengan fungsi sebelumnya...
+    </script>
+</body>
+</html>
